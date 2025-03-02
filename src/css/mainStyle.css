@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@layer component {
+  .service {
+    @apply text-2xl font-bold text-center text-gray-800 mb-4;
+    @apply flex flex-col justify-center items-center bg-white p-11 rounded-lg shadow-md;
+    @apply transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg cursor-pointer;
+  }
+}
