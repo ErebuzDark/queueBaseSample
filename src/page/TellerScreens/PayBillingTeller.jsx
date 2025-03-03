@@ -5,14 +5,19 @@ const PayBillingTeller = () => {
   const { queueBilling, billingServingNumber, setBillingServingNumber } =
     useContext(Context);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [waitingInLine, setWaitingInLine] = useState(0);
 
   const handleNextInline = () => {
     if (queueBilling > billingServingNumber) {
       setBillingServingNumber(billingServingNumber + 1);
+      const remainingQueue = queueBilling - (billingServingNumber + 1);
+      setWaitingInLine(remainingQueue);
     }
   };
 
   useEffect(() => {
+    const remainingQueue = queueBilling - billingServingNumber;
+    setWaitingInLine(remainingQueue);
     if (queueBilling == billingServingNumber) {
       setIsButtonDisabled(true);
     } else {
@@ -26,11 +31,12 @@ const PayBillingTeller = () => {
         <h1 className="text-3xl py-3">
           Current Number Serving: {billingServingNumber}
         </h1>
+        <p>Customer waiting in line: {waitingInLine}</p>
         <button
           disabled={isButtonDisabled}
           className={`flex ${
             isButtonDisabled ? "bg-slate-600" : "bg-blue-950"
-          } text-white p-3 rounded-lg mx-auto`}
+          } text-white p-3 my-3 rounded-lg mx-auto`}
           onClick={handleNextInline}
         >
           Next Customer

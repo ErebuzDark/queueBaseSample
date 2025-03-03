@@ -6,14 +6,20 @@ const ConsultationTeller = () => {
     useContext(Context);
 
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [waitingInLine, setWaitingInLine] = useState(0);
 
   const handleNextInline = () => {
     if (queueConsultation > consultationServingNumber) {
       setConsultationServingNumber(consultationServingNumber + 1);
+      const remainingQueue =
+        queueConsultation - (consultationServingNumber + 1);
+      setWaitingInLine(remainingQueue);
     }
-  }
+  };
 
   useEffect(() => {
+    const remainingQueue = queueConsultation - consultationServingNumber;
+    setWaitingInLine(remainingQueue);
     if (queueConsultation == consultationServingNumber) {
       setIsButtonDisabled(true);
     } else {
@@ -27,6 +33,7 @@ const ConsultationTeller = () => {
         <h1 className="text-3xl py-3">
           Current Number Serving: {consultationServingNumber}
         </h1>
+        <p>Customer waiting in line: {waitingInLine}</p>
         <button
           disabled={isButtonDisabled}
           className={`flex ${

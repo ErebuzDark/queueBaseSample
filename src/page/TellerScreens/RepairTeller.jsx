@@ -10,14 +10,19 @@ const RepairTeller = () => {
   } = useContext(Context);
 
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [waitingInLine, setWaitingInLine] = useState(0);
 
   const handleNextInline = () => {
     if (queueRepair > repairServingNumber) {
       setRepairServingNumber(repairServingNumber + 1);
+      const remainingQueue = queueRepair - (repairServingNumber + 1);
+      setWaitingInLine(remainingQueue);
     }
-  }
+  };
 
   useEffect(() => {
+    const remainingQueue = queueRepair - repairServingNumber;
+    setWaitingInLine(remainingQueue);
     if (queueRepair == repairServingNumber) {
       setIsButtonDisabled(true);
     } else {
@@ -31,6 +36,7 @@ const RepairTeller = () => {
         <h1 className="text-3xl py-3">
           Current Number Serving: {repairServingNumber}
         </h1>
+        <p>Customer waiting in line: {waitingInLine}</p>
         <button
           disabled={isButtonDisabled}
           className={`flex ${
