@@ -13,7 +13,7 @@ const ScreenMonitoring = () => {
       <h2 className="text-3xl text-center bg-slat-800 font-bold">
         Screen Monitoring
       </h2>
-      <ul className="grid grid-cols-4 justify-center gap-4">
+      <ul className="grid grid-cols-2 justify-center gap-4">
         <li className="service">
           <h1>Pay Bills</h1>
           <p className="text-lg font-normal">Now Serving</p>

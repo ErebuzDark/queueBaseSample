@@ -1,11 +1,4 @@
-import { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  NavLink,
-  useNavigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { MyProvider } from "./utils/Context";
 
@@ -24,15 +17,19 @@ function App() {
   return (
     <MyProvider>
       <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Services />} />
-          <Route path="/monitor" element={<ScreenMonitoring />} />
-          <Route path="/teller-1" element={<PayBillingTeller />} />
-          <Route path="/teller-2" element={<ConsultationTeller />} />
-          <Route path="/teller-3" element={<RepairTeller />} />
-          <Route path="/teller-4" element={<InstallationTeller />} />
-        </Routes>
+        <div className="flex h-screen w-full bg-slate-100">
+          <Header />
+          <div className="ml-16 lg:ml-60 p-11 flex-1">
+            <Routes>
+              <Route path="/" element={<Services />} />
+              <Route path="/monitor" element={<ScreenMonitoring />} />
+              <Route path="/teller-1" element={<PayBillingTeller />} />
+              <Route path="/teller-2" element={<ConsultationTeller />} />
+              <Route path="/teller-3" element={<RepairTeller />} />
+              <Route path="/teller-4" element={<InstallationTeller />} />
+            </Routes>
+          </div>
+        </div>
       </Router>
     </MyProvider>
   );

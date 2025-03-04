@@ -13,12 +13,12 @@ const Services = () => {
     setQueueInstallation,
   } = useContext(Context);
   return (
-    <div className="mx-40 my-20">
+    <div className="lg:mx-40 my-20">
       <h2 className="text-3xl text-center bg-slat-800 font-bold">Services</h2>
       <p className="text-center">
         Click the Service you need to print a queue number
       </p>
-      <ul className="grid grid-cols-4 justify-center gap-4">
+      <ul className="grid grid-cols-2 justify-center gap-4">
         <li
           onClick={() => setQueueBilling(queueBilling + 1)}
           className="service"
@@ -33,10 +33,7 @@ const Services = () => {
           <h1>Consultation</h1>
           <p>{queueConsultation}</p>
         </li>
-        <li
-          onClick={() => setQueueRepair(queueRepair + 1)}
-          className="service"
-        >
+        <li onClick={() => setQueueRepair(queueRepair + 1)} className="service">
           <h1>Repair</h1>
           <p>{queueRepair}</p>
         </li>
